@@ -2,7 +2,10 @@
 
 Proyecto de desarrollo web de la web oficial de una edición ficticia de La Velada del Año.
 
-**Equipo:** Camilo Cattaneo · Jhael Odiaga · Mohammed Serroukh
+> Proyecto académico
+
+> Es una edición **ficticia** creada con fines educativos: los combates, luchadores, horarios, precios y el material gráfico son inventados y de creación propia. No tiene relación con la organización oficial de La Velada del Año.
+
 **Web publicada:** [enlace a GitHub Pages]
 
 ## Estructura
