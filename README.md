@@ -6,7 +6,7 @@ Proyecto de desarrollo web de la web oficial de una edición ficticia de La Vela
 
 > Es una edición **ficticia** creada con fines educativos: los combates, luchadores, horarios, precios y el material gráfico son inventados y de creación propia. No tiene relación con la organización oficial de La Velada del Año.
 
-**Web publicada:** [enlace a GitHub Pages]
+**Web publicada:** https://camilokurk.github.io/la-velada-web/
 
 ## Estructura
 
