@@ -55,3 +55,10 @@ Ejemplo en `combats-data.js`: `../assets/images/combats/fighters/nombre.jpg`
 - Nombres de archivo en minúsculas, sin tildes, sin ñ y sin espacios.
 - Un único `style.css`, ordenado por bloques: variables, estilos comunes y un bloque por página.
 - Los scripts se cargan con `defer` y `combats-data.js` va antes que `combats.js`.
+
+### Commits
+
+- Empezar siempre con la clave de la tarea de Jira: `G4-XX`.
+- Después, un verbo en infinitivo que diga qué se ha hecho: Añadir, Corregir, Actualizar, Eliminar…
+- Una sola línea y corta. Si hace falta explicar mucho, mejor dividirlo en varios commits.
+- Ejemplo: `G4-10 Añadir estructura común (header, menú y footer) en las 5 páginas`
