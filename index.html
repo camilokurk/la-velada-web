@@ -7,7 +7,7 @@
     <meta name="description" content="La web oficial de La Velada del Año">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/dark-mode.js" defer></script>
-
+    <script src="js/countdown.js" defer></script>
 </head>
 <body>
     <header id="header">
@@ -21,12 +21,32 @@
                 <li><a href="pages/press.html">Prensa</a></li>
             </ul>
         </nav>
-        <button type="button" id="dark-mode" aria-label="activar el modo oscuro">
+        <button type="button" id="dark-mode" aria-label="Activar el modo oscuro">
 
         </button>
     </header>
     <main>
-
+        <section id="countdown-section">
+            <h2>La Velada del Año empieza en</h2>
+            <div id="countdown">
+                <div class="countdown-item">
+                    <p id="days" class="countdown-number">00</p>
+                    <p class="countdown-label">Días</p>
+                </div>
+                <div class="countdown-item">
+                    <p id="hours" class="countdown-number">00</p>
+                    <p class="countdown-label">Horas</p>
+                </div>
+                <div class="countdown-item">
+                    <p id="minutes" class="countdown-number">00</p>
+                    <p class="countdown-label">Minutos</p>
+                </div>
+                <div class="countdown-item">
+                    <p id="seconds" class="countdown-number">00</p>
+                    <p class="countdown-label">Segundos</p>
+                </div>
+            </div>
+        </section>
     </main>
     <footer>
         <div>
@@ -35,18 +55,15 @@
         </div>
         <div>
             <h2>Redes</h2>
-            
             <ul>
                 <li><a href="https://www.instagram.com/infolavelada/?hl=es" target="_blank" rel="noopener">Instagram</a></li>
                 <li><a href="https://x.com/infoLaVelada" target="_blank" rel="noopener">X</a></li>
             </ul>
         </div>
-        
         <div>
             <h2>Legal</h2>
             <a href="#">Aviso legal</a>
         </div>
-
         <small>© 2026 JhaCaMo Studio S.L. · Proyecto académico</small>
     </footer>
 </body>
