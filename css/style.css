@@ -1,0 +1,48 @@
+
+/* G4-12: Identidad visual de La Velada */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap');
+
+/* ===== VARIABLES ===== */
+:root {
+    /* Colores principales */
+    --color-primary: #E5092A;
+    --color-primary-light: #FF3B55; /* para enlaces: mejor contraste sobre negro */
+    --color-secondary: #171717;
+    --color-dark: #080808;
+    --color-light: #FFFFFF;
+    --color-gray: #B8B8B8;
+    --color-card: #202020;
+    --color-border: #383838;
+    --color-success: #22C55E;
+
+    /* Tipografías */
+    --font-titles: 'Montserrat', sans-serif;
+    --font-text: 'Poppins', sans-serif;
+}
+
+/* ===== ESTILOS COMUNES ===== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    font-family: var(--font-text);
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+nav {
+    font-family: var(--font-titles);
+    font-weight: 800;
+}
+
+a {
+    color: var(--color-primary-light);
+    text-decoration:
+
