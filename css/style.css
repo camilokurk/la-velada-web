@@ -246,6 +246,31 @@ main > section {
     filter: brightness(0.9);
 }
 
+/* ===== INICIO: PATROCINIOS ===== */
+/* Rejilla de logos: 3 columnas en escritorio y en móvil */
+
+#sponsors {
+    background-color: var(--color-surface);
+    text-align: center;
+}
+
+#sponsors ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+    gap: 1.5rem;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+}
+
+#sponsors img {
+    max-width: 100%;
+    height: auto;
+}
+
 /* ===== INICIO: ACCESO AL RESTO DE PÁGINAS ===== */
 
 #quick-links {
