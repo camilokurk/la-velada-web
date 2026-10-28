@@ -1,7 +1,7 @@
 
 /* G4-12: Identidad visual de La Velada */
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;600&display=swap');
 
 /* ===== VARIABLES ===== */
 /* Tema claro (por defecto) */
@@ -12,15 +12,15 @@
 
     /* Colores semánticos */
     --color-bg: #FFFFFF;
-    --color-surface: #F5F5F5; /* tarjetas */
+    --color-surface: #E6E6E6; /* tarjetas */
     --color-border: #D4D4D4;
     --color-text: #171717;
     --color-text-muted: #595959;
     --color-link: #B8071F; /* rojo oscuro: contraste AA sobre fondo claro */
 
     /* Tipografías */
-    --font-titles: 'Montserrat', sans-serif;
-    --font-text: 'Poppins', sans-serif;
+    --font-titles: 'Anton', sans-serif;
+    --font-text: 'Barlow', sans-serif;
 }
 
 /* Tema oscuro: se activa con la clase "darkmode" en el body (js/dark-mode.js) */
@@ -47,12 +47,9 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-h1,
-h2,
-h3,
-nav {
+h1, h2, h3, nav {
     font-family: var(--font-titles);
-    font-weight: 800;
+    font-weight: 400;
 }
 
 a {
