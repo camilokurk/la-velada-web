@@ -4,21 +4,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap');
 
 /* ===== VARIABLES ===== */
+/* Tema claro (por defecto) */
 :root {
-    /* Colores principales */
+    /* Colores de marca (iguales en ambos temas) */
     --color-primary: #E5092A;
-    --color-primary-light: #FF3B55; /* para enlaces: mejor contraste sobre negro */
-    --color-secondary: #171717;
-    --color-dark: #080808;
-    --color-light: #FFFFFF;
-    --color-gray: #B8B8B8;
-    --color-card: #202020;
-    --color-border: #383838;
     --color-success: #22C55E;
+
+    /* Colores semánticos */
+    --color-bg: #FFFFFF;
+    --color-surface: #F5F5F5; /* tarjetas */
+    --color-border: #D4D4D4;
+    --color-text: #171717;
+    --color-text-muted: #595959;
+    --color-link: #B8071F; /* rojo oscuro: contraste AA sobre fondo claro */
 
     /* Tipografías */
     --font-titles: 'Montserrat', sans-serif;
     --font-text: 'Poppins', sans-serif;
+}
+
+/* Tema oscuro: se activa con la clase "darkmode" en el body (js/dark-mode.js) */
+body.darkmode {
+    --color-bg: #080808;
+    --color-surface: #202020;
+    --color-border: #383838;
+    --color-text: #FFFFFF;
+    --color-text-muted: #B8B8B8;
+    --color-link: #FF3B55; /* mejor contraste sobre negro */
 }
 
 /* ===== ESTILOS COMUNES ===== */
@@ -28,10 +40,11 @@
 
 body {
     margin: 0;
-    background-color: var(--color-dark);
-    color: var(--color-light);
+    background-color: var(--color-bg);
+    color: var(--color-text);
     font-family: var(--font-text);
     line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1,
@@ -43,6 +56,6 @@ nav {
 }
 
 a {
-    color: var(--color-primary-light);
-    text-decoration:
-0
+    color: var(--color-link);
+    text-decoration:none
+}
