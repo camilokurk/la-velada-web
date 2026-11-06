@@ -96,6 +96,40 @@ function mostrarError(campo, mensaje) {
     return false
 }
 
+function mostrarConfirmacion(datos) {
+    const confirmacion = document.getElementById("confirmation")
+    confirmacion.textContent = ""
+
+    const titulo = document.createElement("h2")
+    titulo.textContent = "¡Compra realizada!"
+
+    const mensaje = document.createElement("p")
+    mensaje.textContent = "Gracias, " + datos.nombre + ". Te enviaremos la confirmación a " + datos.correo + "."
+
+    const lineas = [
+        "Zona: " + datos.zona,
+        "Entradas: " + datos.entradas
+    ]
+    if (datos.total !== "" && datos.total !== "—") {
+        lineas.push("Total: " + datos.total)
+    }
+
+    const lista = document.createElement("ul")
+    lineas.forEach(function (texto) {
+        const li = document.createElement("li")
+        li.textContent = texto
+        lista.appendChild(li)
+    })
+
+    confirmacion.appendChild(titulo)
+    confirmacion.appendChild(mensaje)
+    confirmacion.appendChild(lista)
+
+    confirmacion.setAttribute("tabindex", "-1")
+    confirmacion.hidden = false
+    confirmacion.focus()
+}
+
 function iniciarValidacion() {
 
     const zone = document.getElementById("zone")
@@ -142,10 +176,17 @@ function iniciarValidacion() {
 
         if (primerError !== null) {
             primerError.focus()
+            document.getElementById("confirmation").hidden = true
             return
         }
 
-        console.log("todo correcto")
+                mostrarConfirmacion({
+            nombre: firstName.value.trim(),
+            correo: email.value.trim(),
+            zona: zone.options[zone.selectedIndex].text,
+            entradas: quantity.value,
+            total: document.getElementById("summary-total").textContent
+        })
     }
 }
 
