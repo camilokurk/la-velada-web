@@ -7,7 +7,9 @@
     <meta name="description" content="Entradas oficiales de La Velada del Año">
     <link rel="stylesheet" href="../css/style.css">
     <script src="../js/dark-mode.js" defer></script>
-
+    <script src="../js/price-calc.js" defer></script>
+    <script src="../js/validation-confirmation.js" defer></script>
+    <script src="../js/summary-reservation.js" defer></script>
 </head>
 <body>
     <header id="header">
@@ -25,8 +27,97 @@
 
         </button>
     </header>
-    <main>
+    <main id="tickets">
+        <h1>Entradas</h1>
+        <p class="tickets-intro">Estadio Metropolitano · 22 de junio · 7.ª edición. Elige tu zona, indica cuántas entradas quieres y rellena tus datos.</p>
 
+        <div id="tickets-layout">
+            <form id="ticket-form" action="#" method="post" novalidate>
+
+                <fieldset>
+                    <legend>Tus entradas</legend>
+
+                    <div class="field">
+                        <label for="zone">Zona</label>
+                        <select id="zone" name="zone" required aria-describedby="zone-error">
+                            <option value="" data-price="0">Selecciona una zona</option>
+                            <option value="fondo" data-price="50">Fondo · 50 €</option>
+                            <option value="lateral" data-price="90">Grada lateral · 90 €</option>
+                            <option value="premium" data-price="150">Grada premium · 150 €</option>
+                            <option value="vip" data-price="300">Pista VIP · 300 €</option>
+                        </select>
+                        <span class="error" id="zone-error" role="alert"></span>
+                    </div>
+
+                    <div class="field">
+                        <label for="quantity">Número de entradas</label>
+                        <input type="number" id="quantity" name="quantity" min="1" max="4" value="1" required aria-describedby="quantity-hint quantity-error">
+                        <span class="hint" id="quantity-hint">Entre 1 y 4 entradas.</span>
+                        <span class="error" id="quantity-error" role="alert"></span>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Tus datos</legend>
+
+                    <div class="field">
+                        <label for="first-name">Nombre</label>
+                        <input type="text" id="first-name" name="first-name" autocomplete="given-name" required aria-describedby="first-name-error">
+                        <span class="error" id="first-name-error" role="alert"></span>
+                    </div>
+
+                    <div class="field">
+                        <label for="last-name">Apellidos</label>
+                        <input type="text" id="last-name" name="last-name" autocomplete="family-name" required aria-describedby="last-name-error">
+                        <span class="error" id="last-name-error" role="alert"></span>
+                    </div>
+
+                    <div class="field">
+                        <label for="email">Correo electrónico</label>
+                        <input type="email" id="email" name="email" autocomplete="email" required aria-describedby="email-hint email-error">
+                        <span class="hint" id="email-hint">Te enviaremos aquí la confirmación.</span>
+                        <span class="error" id="email-error" role="alert"></span>
+                    </div>
+
+                    <div class="field">
+                        <label for="phone">Teléfono</label>
+                        <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" required aria-describedby="phone-error">
+                        <span class="error" id="phone-error" role="alert"></span>
+                    </div>
+
+                    <div class="field">
+                        <label for="birthdate">Fecha de nacimiento</label>
+                        <input type="date" id="birthdate" name="birthdate" autocomplete="bday" required aria-describedby="birthdate-error">
+                        <span class="error" id="birthdate-error" role="alert"></span>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Condiciones</legend>
+
+                    <div class="field field-check">
+                        <input type="checkbox" id="terms" name="terms" required aria-describedby="terms-error">
+                        <label for="terms">Acepto las <a href="#">condiciones de compra</a></label>
+                        <span class="error" id="terms-error" role="alert"></span>
+                    </div>
+                </fieldset>
+
+                <button type="submit" id="buy-button">Comprar entradas</button>
+            </form>
+
+            <aside id="price-summary" aria-labelledby="summary-title">
+                <h2 id="summary-title">Resumen del precio</h2>
+                <dl>
+                    <div><dt>Zona</dt><dd id="summary-zone">—</dd></div>
+                    <div><dt>Precio por entrada</dt><dd id="summary-unit">—</dd></div>
+                    <div><dt>Entradas</dt><dd id="summary-quantity">—</dd></div>
+                    <div><dt>Gastos de gestión</dt><dd id="summary-fees">—</dd></div>
+                    <div class="summary-total"><dt>Total</dt><dd id="summary-total">—</dd></div>
+                </dl>
+            </aside>
+        </div>
+
+        <section id="confirmation" hidden aria-live="polite"></section>
     </main>
     <footer>
         <div>
@@ -35,13 +126,13 @@
         </div>
         <div>
             <h2>Redes</h2>
-            
+
             <ul>
                 <li><a href="https://www.instagram.com/infolavelada/?hl=es" target="_blank" rel="noopener">Instagram</a></li>
                 <li><a href="https://x.com/infoLaVelada" target="_blank" rel="noopener">X</a></li>
             </ul>
         </div>
-        
+
         <div>
             <h2>Legal</h2>
             <a href="#">Aviso legal</a>
