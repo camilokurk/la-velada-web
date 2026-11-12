@@ -104,26 +104,10 @@ function mostrarConfirmacion(datos) {
     titulo.textContent = "¡Compra realizada!"
 
     const mensaje = document.createElement("p")
-    mensaje.textContent = "Gracias, " + datos.nombre + ". Te enviaremos la confirmación a " + datos.correo + "."
-
-    const lineas = [
-        "Zona: " + datos.zona,
-        "Entradas: " + datos.entradas
-    ]
-    if (datos.total !== "" && datos.total !== "—") {
-        lineas.push("Total: " + datos.total)
-    }
-
-    const lista = document.createElement("ul")
-    lineas.forEach(function (texto) {
-        const li = document.createElement("li")
-        li.textContent = texto
-        lista.appendChild(li)
-    })
+    mensaje.textContent = "Gracias, " + datos.nombre + ". Te enviaremos la confirmación a " + datos.correo + "."    
 
     confirmacion.appendChild(titulo)
     confirmacion.appendChild(mensaje)
-    confirmacion.appendChild(lista)
 
     confirmacion.setAttribute("tabindex", "-1")
     confirmacion.hidden = false
@@ -180,12 +164,19 @@ function iniciarValidacion() {
             return
         }
 
-                mostrarConfirmacion({
+        mostrarConfirmacion({
             nombre: firstName.value.trim(),
             correo: email.value.trim(),
+        })
+
+        mostrarResumen({
+            codigo: generarCodigoReserva(),
             zona: zone.options[zone.selectedIndex].text,
             entradas: quantity.value,
-            total: document.getElementById("summary-total").textContent
+            precio: document.getElementById("summary-unit").textContent,
+            gastos: document.getElementById("summary-fees").textContent,
+            total: document.getElementById("summary-total").textContent,
+            fecha: new Date().toLocaleDateString("es-ES")
         })
     }
 }
