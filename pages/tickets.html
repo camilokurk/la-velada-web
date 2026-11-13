@@ -1,93 +1,112 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entradas | Night Clash 2027</title>
-    <meta name="description" content="Entradas para Night Clash 2027">
+    <title>Entradas | La Velada del Año</title>
+    <meta name="description" content="Entradas oficiales de La Velada del Año">
     <link rel="stylesheet" href="../css/style.css">
     <script src="../js/dark-mode.js" defer></script>
     <script src="../js/price-calc.js" defer></script>
     <script src="../js/validation-confirmation.js" defer></script>
     <script src="../js/summary-reservation.js" defer></script>
-    <script src="../js/tickets.js" defer></script>
 </head>
 <body>
+    <header id="header">
+        <a href="../index.html"><img src="../assets/images/general/logo.webp" alt="La Velada del Año"></a>
+        <nav id="header-pages">
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="combats.html">Combates</a></li>
+                <li><a href="tickets.html" aria-current="page">Entradas</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="press.html">Prensa</a></li>
+            </ul>
+        </nav>
+        <button type="button" id="dark-mode" aria-label="activar el modo oscuro">
 
-<header id="header">
-    <a href="../index.html">
-        <img src="../assets/images/general/logo.svg" alt="Night Clash 2027">
-    </a>
+        </button>
+    </header>
+    <main id="tickets">
+        <h1>Entradas</h1>
+        <p class="tickets-intro">Estadio Riyadh Air Metropolitano, Madrid · 17 de julio de 2027 · Edición 2027. Elige tu zona, indica cuántas entradas quieres y rellena tus datos.</p>
 
-    <nav id="header-pages">
-        <ul>
-            <li><a href="../index.html">Inicio</a></li>
-            <li><a href="combats.html">Combates</a></li>
-            <li><a href="tickets.html" aria-current="page">Entradas</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="press.html">Prensa</a></li>
-        </ul>
-    </nav>
+        <div id="tickets-layout">
+            <figure id="tickets-map">
+                <div id="tickets-map-placeholder">Plano del estadio</div>
+            </figure>
 
-    <button type="button" id="dark-mode"
-            aria-label="Activar el modo oscuro"></button>
-</header>
+            <form id="ticket-form" action="#" method="post" novalidate>
 
-<main>
-    <section id="tickets">
-        <h1>Compra tus entradas</h1>
-        <p>Elige tu entrada para Night Clash 2027.</p>
+                <fieldset>
+                    <legend>Tus entradas</legend>
 
-       <p id="confirmation-message" role="status"
-   aria-live="polite"></p>
-        <form id="ticket-form">
+                    <div class="field">
+                        <label for="zone">Zona</label>
+                        <select id="zone" name="zone" required aria-describedby="zone-error">
+                            <option value="" data-price="0">Selecciona una zona</option>
+                            <option value="fondo" data-price="50">Fondo · 50 €</option>
+                            <option value="lateral" data-price="90">Grada lateral · 90 €</option>
+                            <option value="premium" data-price="150">Grada premium · 150 €</option>
+                            <option value="vip" data-price="300">Pista VIP · 300 €</option>
+                        </select>
+                        <span class="error" id="zone-error" role="alert"></span>
+                    </div>
 
-            <label for="ticket-type">Tipo de entrada:</label>
-            <select id="ticket-type" required>
-                <option value="50">Entrada general - 50 €</option>
-                <option value="100">Entrada premium - 100 €</option>
-                <option value="200">Entrada VIP - 200 €</option>
-                <option value="300">Entrada exclusiva - 300 €</option>
-            </select>
+                    <div class="field">
+                        <label for="quantity">Número de entradas</label>
+                        <input type="number" id="quantity" name="quantity" min="1" max="4" value="1" required aria-describedby="quantity-hint quantity-error">
+                        <span class="hint" id="quantity-hint">Entre 1 y 4 entradas.</span>
+                        <span class="error" id="quantity-error" role="alert"></span>
+                    </div>
+                </fieldset>
 
-            <label for="quantity">Cantidad de entradas:</label>
-            <input type="number" id="quantity"
-                   min="1" max="10" value="1" required>
+                <fieldset>
+                    <legend>Tus datos</legend>
 
-            <div id="total-price" aria-live="polite">
-                <h2>Precio total: <span id="total">50,00 €</span></h2>
-            </div>
+                    <div class="field">
+                        <label for="first-name">Nombre</label>
+                        <input type="text" id="first-name" name="first-name" autocomplete="given-name" required aria-describedby="first-name-error">
+                        <span class="error" id="first-name-error" role="alert"></span>
+                    </div>
 
-            <button type="submit">Continuar</button>
+                    <div class="field">
+                        <label for="last-name">Apellidos</label>
+                        <input type="text" id="last-name" name="last-name" autocomplete="family-name" required aria-describedby="last-name-error">
+                        <span class="error" id="last-name-error" role="alert"></span>
+                    </div>
 
-        </form>
-    </section>
-</main>
+                    <div class="field">
+                        <label for="email">Correo electrónico</label>
+                        <input type="email" id="email" name="email" autocomplete="email" required aria-describedby="email-hint email-error">
+                        <span class="hint" id="email-hint">Te enviaremos aquí la confirmación.</span>
+                        <span class="error" id="email-error" role="alert"></span>
+                    </div>
 
-<footer>
-    <div>
-        <h2>Contacto</h2>
-        <address>
-            <a href="mailto:contacto@velada.com">Enviar correo</a>
-        </address>
-    </div>
+                    <div class="field">
+                        <label for="phone">Teléfono</label>
+                        <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" required aria-describedby="phone-error">
+                        <span class="error" id="phone-error" role="alert"></span>
+                    </div>
 
-    <div>
-        <h2>Redes</h2>
-        <ul>
-            <li><a href="https://www.instagram.com/infolavelada/?hl=es" target="_blank" rel="noopener">Instagram</a></li>
-            <li><a href="https://x.com/infoLaVelada" target="_blank" rel="noopener">X</a></li>
-        </ul>
-    </div>
+                    <div class="field">
+                        <label for="birthdate">Fecha de nacimiento</label>
+                        <input type="date" id="birthdate" name="birthdate" autocomplete="bday" required aria-describedby="birthdate-error">
+                        <span class="error" id="birthdate-error" role="alert"></span>
+                    </div>
+                </fieldset>
 
-    <div>
-        <h2>Legal</h2>
-        <a href="#">Aviso legal</a>
-    </div>
+                <fieldset>
+                    <legend>Condiciones</legend>
 
-    <small>© 2026 JhaCaMo Studio S.L. · Proyecto académico</small>
-</footer>
+                    <div class="field field-check">
+                        <input type="checkbox" id="terms" name="terms" required aria-describedby="terms-error">
+                        <label for="terms">Acepto las <a href="#">condiciones de compra</a></label>
+                        <span class="error" id="terms-error" role="alert"></span>
+                    </div>
+                </fieldset>
 
-</body>
-</html>
+                <button type="submit" id="buy-button">Comprar entradas</button>
+            </form>
+
+            <aside id="price-summary" aria-labelledby="summary-title">

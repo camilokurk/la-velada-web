@@ -1,39 +1,29 @@
-
-/* G4-12: Identidad visual de La Velada */
-
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;600&display=swap');
 
-/* ===== VARIABLES ===== */
-/* Tema claro (por defecto) */
 :root {
-    /* Colores de marca (iguales en ambos temas) */
     --color-primary: #E5092A;
     --color-success: #22C55E;
 
-    /* Colores semánticos */
     --color-bg: #FFFFFF;
-    --color-surface: #E6E6E6; /* tarjetas */
+    --color-surface: #E6E6E6;
     --color-border: #D4D4D4;
     --color-text: #171717;
     --color-text-muted: #595959;
-    --color-link: #B8071F; /* rojo oscuro: contraste AA sobre fondo claro */
+    --color-link: #B8071F;
 
-    /* Tipografías */
     --font-titles: 'Anton', sans-serif;
     --font-text: 'Barlow', sans-serif;
 }
 
-/* Tema oscuro: se activa con la clase "darkmode" en el body (js/dark-mode.js) */
 body.darkmode {
     --color-bg: #080808;
     --color-surface: #202020;
     --color-border: #383838;
     --color-text: #FFFFFF;
     --color-text-muted: #B8B8B8;
-    --color-link: #FF3B55; /* mejor contraste sobre negro */
+    --color-link: #FF3B55;
 }
 
-/* ===== ESTILOS COMUNES ===== */
 * {
     box-sizing: border-box;
 }
@@ -41,7 +31,7 @@ body.darkmode {
 body {
     display: flex;
     flex-direction: column;
-    min-height: 100dvh; /* el footer queda al final aunque haya poco contenido */
+    min-height: 100dvh;
     margin: 0;
     background-color: var(--color-bg);
     color: var(--color-text);
@@ -60,11 +50,9 @@ a {
     text-decoration:none
 }
 
-/* ===== HEADER ===== */
-
 header {
     display: grid;
-    grid-template-columns: 1fr auto 1fr; /* logo | menú centrado | botón */
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
     min-height: 5rem;
     padding: 0 2rem;
@@ -109,7 +97,6 @@ header {
     cursor: pointer;
 }
 
-/* Icono: luna en tema claro, sol en tema oscuro (lo que se activa al pulsar) */
 #dark-mode::before {
     content: "\263E";
     font-size: 1.25rem;
@@ -125,9 +112,6 @@ body.darkmode #dark-mode::before {
     background-color: var(--color-text);
     color: var(--color-bg);
 }
-
-/* ===== INICIO: CARTEL PRINCIPAL ===== */
-/* Datos principales (edición, fecha, lugar) encima de la foto */
 
 #hero-data {
     display: flex;
@@ -157,8 +141,6 @@ body.darkmode #dark-mode::before {
     object-fit: cover;
 }
 
-/* ===== INICIO: CUENTA ATRÁS Y CTA ===== */
-
 main {
     flex: 1;
 }
@@ -171,12 +153,11 @@ main > section {
     display: grid;
     grid-template-columns: auto auto;
     justify-content: center;
-    align-items: stretch; /* contador y CTA ocupan la misma altura */
+    align-items: stretch;
     column-gap: 3rem;
     row-gap: 1rem;
 }
 
-/* Fila 1: título sobre el contador. Fila 2: contador y CTA, borde con borde */
 #countdown-section > h2 {
     grid-column: 1;
     grid-row: 1;
@@ -215,14 +196,13 @@ main > section {
     color: var(--color-text-muted);
 }
 
-/* CTA principal con su botón de acción */
 #cta {
     grid-column: 2;
     grid-row: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between; /* título arriba, botón abajo */
+    justify-content: space-between;
     text-align: center;
 }
 
@@ -246,9 +226,6 @@ main > section {
     filter: brightness(0.9);
 }
 
-/* ===== INICIO: PATROCINIOS ===== */
-/* Rejilla de logos: 3 columnas en escritorio y en móvil */
-
 #sponsors {
     background-color: var(--color-surface);
     text-align: center;
@@ -271,8 +248,6 @@ main > section {
     height: auto;
 }
 
-/* ===== INICIO: ACCESO AL RESTO DE PÁGINAS ===== */
-
 #quick-links {
     display: flex;
     flex-wrap: wrap;
@@ -289,8 +264,6 @@ main > section {
     font-family: var(--font-titles);
     font-weight: 400;
 }
-
-/* ===== FOOTER ===== */
 
 footer {
     display: flex;
@@ -322,8 +295,6 @@ footer small {
     color: var(--color-text-muted);
 }
 
-/* ===== RESPONSIVE (móvil) ===== */
-
 @media (max-width: 768px) {
     #countdown-section {
         grid-template-columns: auto;
@@ -339,7 +310,6 @@ footer small {
         gap: 1rem;
     }
 
-    /* Logo y botón arriba, menú debajo */
     header {
         grid-template-columns: 1fr auto;
         gap: 1rem;
@@ -364,5 +334,297 @@ footer small {
 
     .countdown-item {
         min-width: 3.5rem;
+    }
+}
+
+#tickets {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem 2rem;
+}
+
+#tickets-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+        "map summary"
+        "form summary";
+    gap: 1.5rem;
+    align-items: start;
+}
+
+#tickets-layout[hidden] {
+    display: none;
+}
+
+#tickets-map {
+    grid-area: map;
+    margin: 0;
+}
+
+#tickets-map-placeholder {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 16 / 7;
+    background-color: var(--color-surface);
+    border-radius: 0.5rem;
+    font-family: var(--font-titles);
+    color: var(--color-text-muted);
+}
+
+#ticket-form {
+    grid-area: form;
+}
+
+#ticket-form fieldset {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1rem;
+    margin: 0 0 1.5rem;
+    padding: 0;
+    border: none;
+}
+
+#ticket-form .field:has(#email),
+#ticket-form .field-check {
+    grid-column: 1 / -1;
+}
+
+#ticket-form legend {
+    margin-bottom: 0.75rem;
+    padding: 0;
+    font-family: var(--font-titles);
+    font-size: 1.25rem;
+}
+
+.field {
+    display: grid;
+    align-content: start;
+    gap: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.field input,
+.field select {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font: inherit;
+    border: 1px solid var(--color-text-muted);
+    border-radius: 0.5rem;
+}
+
+body.darkmode .field input {
+    color-scheme: dark;
+}
+
+.field-check {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    column-gap: 0.5rem;
+}
+
+.field-check input {
+    width: auto;
+}
+
+.field-check .error {
+    grid-column: 1 / -1;
+}
+
+#buy-button {
+    width: 100%;
+    padding: 0.75rem 2rem;
+    background-color: var(--color-primary);
+    color: #FFFFFF;
+    font-family: var(--font-titles);
+    font-size: 1.125rem;
+    font-weight: 400;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+#buy-button:hover {
+    filter: brightness(0.9);
+}
+
+#price-summary {
+    grid-area: summary;
+    position: sticky;
+    top: 1.5rem;
+    padding: 1.5rem;
+    background-color: var(--color-surface);
+    border-radius: 0.5rem;
+}
+
+#price-summary h2 {
+    margin: 0 0 1rem;
+}
+
+#price-summary dl {
+    margin: 0;
+}
+
+#price-summary dl > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.25rem 0;
+}
+
+#price-summary dt {
+    color: var(--color-text-muted);
+}
+
+#price-summary dd {
+    margin: 0;
+    text-align: right;
+}
+
+#price-summary .summary-total dt,
+#price-summary .summary-total dd {
+    color: var(--color-text);
+    font-family: var(--font-titles);
+    font-size: 1.25rem;
+}
+
+:root {
+    --color-error: #B00020;
+}
+
+body.darkmode {
+    --color-error: #FF6B6B;
+}
+
+.error {
+    display: block;
+    min-height: 1.4rem;
+    font-size: 0.875rem;
+    color: var(--color-error);
+}
+
+.hint {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+}
+
+input[aria-invalid="true"],
+select[aria-invalid="true"] {
+    border: 2px solid var(--color-error);
+}
+
+input[type="checkbox"][aria-invalid="true"] {
+    outline: 2px solid var(--color-error);
+}
+
+#confirmation {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    padding: 0 0 2rem;
+}
+
+#confirmation[hidden] {
+    display: none;
+}
+
+#confirmation-summary,
+#confirmation-buyer {
+    padding: 1.5rem;
+    background-color: var(--color-surface);
+    border-radius: 0.5rem;
+}
+
+#confirmation-summary {
+    border-left: 0.25rem solid var(--color-success);
+}
+
+#confirmation h2,
+#confirmation h3 {
+    margin: 0 0 0.75rem;
+}
+
+#confirmation p {
+    margin: 0;
+}
+
+#confirmation strong {
+    display: block;
+    font-family: var(--font-titles);
+    font-size: clamp(1.75rem, 6vw, 2.5rem);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+    color: var(--color-primary);
+}
+
+#confirmation dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem 1.5rem;
+    margin: 1rem 0;
+}
+
+#confirmation dt {
+    color: var(--color-text-muted);
+}
+
+#confirmation dd {
+    margin: 0;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+#download-pdf {
+    margin-top: 1rem;
+    padding: 0.75rem 2rem;
+    background-color: var(--color-primary);
+    color: #FFFFFF;
+    font-family: var(--font-titles);
+    font-weight: 400;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+#download-pdf:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+    #ticket-form fieldset {
+        grid-template-columns: 1fr;
+    }
+
+    #tickets-layout {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "map"
+            "form"
+            "summary";
+    }
+
+    #price-summary {
+        position: static;
+    }
+
+    #confirmation {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    #tickets {
+        padding: 0 1rem 1.5rem;
+    }
+
+    #confirmation-summary,
+    #confirmation-buyer {
+        padding: 1rem;
     }
 }

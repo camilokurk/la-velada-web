@@ -100,14 +100,52 @@ function mostrarConfirmacion(datos) {
     const confirmacion = document.getElementById("confirmation")
     confirmacion.textContent = ""
 
+    // Tarjeta izquierda: título de la compra; mostrarResumen añade el resumen y el código
+    const tarjetaResumen = document.createElement("div")
+    tarjetaResumen.id = "confirmation-summary"
+
     const titulo = document.createElement("h2")
     titulo.textContent = "¡Compra realizada!"
+    tarjetaResumen.appendChild(titulo)
+
+    // Tarjeta derecha: confirmación y datos del comprador
+    const tarjetaComprador = document.createElement("div")
+    tarjetaComprador.id = "confirmation-buyer"
+
+    const tituloComprador = document.createElement("h3")
+    tituloComprador.textContent = "Datos del comprador"
 
     const mensaje = document.createElement("p")
-    mensaje.textContent = "Gracias, " + datos.nombre + ". Te enviaremos la confirmación a " + datos.correo + "."    
+    mensaje.textContent = "Gracias, " + datos.nombre + ". Te enviaremos la confirmación a " + datos.correo + "."
 
-    confirmacion.appendChild(titulo)
-    confirmacion.appendChild(mensaje)
+    const lista = document.createElement("dl")
+
+    const filas = [
+        ["Nombre", datos.nombre + " " + datos.apellidos],
+        ["Correo electrónico", datos.correo],
+        ["Teléfono", datos.telefono],
+        ["Fecha de nacimiento", datos.nacimiento]
+    ]
+
+    filas.forEach(function (par) {
+        const dt = document.createElement("dt")
+        dt.textContent = par[0]
+        const dd = document.createElement("dd")
+        dd.textContent = par[1]
+        lista.appendChild(dt)
+        lista.appendChild(dd)
+    })
+
+    tarjetaComprador.appendChild(tituloComprador)
+    tarjetaComprador.appendChild(mensaje)
+    tarjetaComprador.appendChild(lista)
+
+    confirmacion.appendChild(tarjetaResumen)
+    confirmacion.appendChild(tarjetaComprador)
+
+    // La pantalla de confirmación sustituye a la de selección de entradas
+    document.getElementById("tickets-layout").hidden = true
+    document.querySelector(".tickets-intro").hidden = true
 
     confirmacion.setAttribute("tabindex", "-1")
     confirmacion.hidden = false
@@ -166,7 +204,10 @@ function iniciarValidacion() {
 
         mostrarConfirmacion({
             nombre: firstName.value.trim(),
+            apellidos: lastName.value.trim(),
             correo: email.value.trim(),
+            telefono: phone.value.trim(),
+            nacimiento: birthdate.value.split("-").reverse().join("/"),
         })
 
         mostrarResumen({

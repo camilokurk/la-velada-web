@@ -4,13 +4,10 @@ function generarCodigoReserva() {
 }
 
 function mostrarResumen(datos) {
-    const conf = document.getElementById("confirmation")
+    const conf = document.getElementById("confirmation-summary")
 
     const titulo = document.createElement("h3")
     titulo.textContent = "Resumen de tu compra"
-
-    const codigo = document.createElement("p")
-    codigo.textContent = "Código de reserva: " + datos.codigo
 
     const lista = document.createElement("dl")
 
@@ -32,7 +29,21 @@ function mostrarResumen(datos) {
         lista.appendChild(dd)
     })
 
+    const codigo = document.createElement("p")
+    codigo.textContent = "Código de reserva: "
+    const codigoDestacado = document.createElement("strong")
+    codigoDestacado.textContent = datos.codigo
+    codigo.appendChild(codigoDestacado)
+
+    // Descarga del PDF pendiente: el botón queda deshabilitado
+    const descarga = document.createElement("button")
+    descarga.type = "button"
+    descarga.id = "download-pdf"
+    descarga.disabled = true
+    descarga.textContent = "Descargar PDF"
+
     conf.appendChild(titulo)
-    conf.appendChild(codigo)
     conf.appendChild(lista)
+    conf.appendChild(codigo)
+    conf.appendChild(descarga)
 }
