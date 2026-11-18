@@ -866,3 +866,49 @@ main > h1:has(+ #combats-list) {
         font-size: 0.875rem;
     }
 }
+
+#faq {
+    max-width: 50rem;
+    margin: 0 auto;
+}
+
+#faq h1 {
+    margin: 0 0 0.5rem;
+}
+
+#faq > p {
+    margin: 0 0 1.5rem;
+    color: var(--color-text-muted);
+}
+
+#faq details {
+    margin-bottom: 0.75rem;
+    background-color: var(--color-surface);
+    border-left: 0.25rem solid var(--color-primary);
+    border-radius: 0.5rem;
+}
+
+#faq summary {
+    padding: 1rem 1.25rem;
+    font-family: var(--font-titles);
+    font-size: 1.125rem;
+    cursor: pointer;
+}
+
+#faq summary:hover {
+    color: var(--color-link);
+}
+
+#faq details[open] summary {
+    border-bottom: 1px solid var(--color-border);
+}
+
+#faq details p {
+    margin: 0;
+    padding: 1rem 1.25rem;
+}
+
+#faq details a {
+    display: inline-block;
+    margin: 0 1.25rem 1rem;
+}
