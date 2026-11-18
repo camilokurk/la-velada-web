@@ -1,4 +1,3 @@
-
 const ticketType = document.getElementById("ticket-type");
 const quantity = document.getElementById("quantity");
 const total = document.getElementById("total");

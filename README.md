@@ -48,13 +48,13 @@ la-velada-web/
 | `pages/*.html` | `../css/style.css` | `../js/…`, `../assets/…` | `../index.html` | `combats.html`        |
 
 **Importante:** las rutas de imágenes dentro de los archivos JS se escriben desde la página que los carga, no desde `js/`.
-Ejemplo en `combats-data.js`: `../assets/images/combats/fighters/nombre.jpg`
+Ejemplo en `combats-data.js`: `../assets/images/combats/fighters/nombre.png`
 
 ## Normas
 
 - Nombres de archivo en minúsculas, sin tildes, sin ñ y sin espacios.
 - Un único `style.css`, ordenado por bloques: variables, estilos comunes y un bloque por página.
-- Los scripts se cargan con `defer` y `combats-data.js` va antes que `combats.js`.
+- Favicon en las 5 páginas: `<link rel="icon">` apuntando a `assets/images/general/logo.webp`.
 
 ### Commits
 
@@ -62,3 +62,7 @@ Ejemplo en `combats-data.js`: `../assets/images/combats/fighters/nombre.jpg`
 - Después, un verbo en infinitivo que diga qué se ha hecho: Añadir, Corregir, Actualizar, Eliminar…
 - Una sola línea y corta. Si hace falta explicar mucho, mejor dividirlo en varios commits.
 - Ejemplo: `G4-10 Añadir estructura común (header, menú y footer) en las 5 páginas`
+
+## Equipo
+
+JhaCaMo Studio S.L. — Jhael, Camilo y Moha. Módulo 1713 – Projecte intermodular (CFGM SMX), Institut Badia del Vallès.
