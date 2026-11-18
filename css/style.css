@@ -10,6 +10,7 @@
     --color-text: #171717;
     --color-text-muted: #595959;
     --color-link: #B8071F;
+    --color-hero: #080808;
 
     --font-titles: 'Anton', sans-serif;
     --font-text: 'Barlow', sans-serif;
@@ -40,6 +41,12 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+@media (prefers-reduced-motion: reduce) {
+    body {
+        transition: none;
+    }
+}
+
 h1, h2, h3, nav {
     font-family: var(--font-titles);
     font-weight: 400;
@@ -47,7 +54,16 @@ h1, h2, h3, nav {
 
 a {
     color: var(--color-link);
-    text-decoration:none
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+:focus-visible {
+    outline: 3px solid var(--color-link);
+    outline-offset: 2px;
 }
 
 header {
@@ -73,8 +89,14 @@ header {
     color: var(--color-text);
 }
 
+#header-pages a:hover {
+    color: var(--color-link);
+}
+
 #header-pages a[aria-current="page"] {
     color: var(--color-link);
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
 }
 
 #header img {
@@ -133,12 +155,16 @@ body.darkmode #dark-mode::before {
     margin: 0;
 }
 
+#hero {
+    background-color: var(--color-hero);
+}
+
 #hero-photo {
     display: block;
     width: 100%;
+    max-width: 142dvh;
     height: auto;
-    max-height: 70dvh;
-    object-fit: cover;
+    margin: 0 auto;
 }
 
 main {
@@ -153,30 +179,46 @@ main > section {
     display: grid;
     grid-template-columns: auto auto;
     justify-content: center;
-    align-items: stretch;
-    column-gap: 3rem;
-    row-gap: 1rem;
+    align-items: center;
+    column-gap: 5rem;
+    row-gap: 1.5rem;
+    padding-block: clamp(2.5rem, 6vw, 4.5rem);
 }
 
 #countdown-section > h2 {
     grid-column: 1;
     grid-row: 1;
     margin: 0;
+    font-size: 1.25rem;
+    letter-spacing: 0.08em;
     text-align: center;
+    text-transform: uppercase;
+}
+
+#countdown-section > h2::after,
+#sponsors h2::after {
+    content: "";
+    display: block;
+    width: 3rem;
+    height: 0.25rem;
+    margin: 0.5rem auto 0;
+    background-color: var(--color-primary);
 }
 
 #countdown {
     grid-column: 1;
     grid-row: 2;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
-    padding: 1rem 1.5rem;
-    background-color: var(--color-surface);
-    border-radius: 0.5rem;
 }
 
 .countdown-item {
-    min-width: 4.5rem;
+    min-width: 6.5rem;
+    padding: 1rem 0.75rem;
+    background-color: var(--color-surface);
+    border-bottom: 0.25rem solid var(--color-primary);
+    border-radius: 0.5rem;
     text-align: center;
 }
 
@@ -186,65 +228,96 @@ main > section {
 
 .countdown-number {
     font-family: var(--font-titles);
-    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
     font-weight: 400;
     line-height: 1.1;
 }
 
 .countdown-label {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     color: var(--color-text-muted);
 }
 
 #cta {
     grid-column: 2;
-    grid-row: 2;
+    grid-row: 1 / span 2;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    gap: 1.5rem;
     text-align: center;
 }
 
 #cta h2 {
+    max-width: 12ch;
     margin: 0;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
 }
 
 .btn {
     display: inline-block;
-    padding: 0.75rem 2rem;
+    padding: 1rem 2.5rem;
     background-color: var(--color-primary);
     color: #FFFFFF;
     font-family: var(--font-titles);
+    font-size: 1.25rem;
     font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
     border: none;
     border-radius: 0.5rem;
     cursor: pointer;
 }
 
-.btn:hover {
+.btn:hover,
+.btn:focus-visible {
     filter: brightness(0.9);
+    text-decoration: none;
 }
 
 #sponsors {
+    padding-block: clamp(2.5rem, 5vw, 4rem);
     background-color: var(--color-surface);
     text-align: center;
 }
 
+#sponsors h2 {
+    margin: 0 0 2rem;
+    font-size: 1.25rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
 #sponsors ul {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     justify-items: center;
     align-items: center;
-    gap: 1.5rem;
-    max-width: 700px;
+    gap: 1rem;
+    max-width: 70rem;
     margin: 0 auto;
     padding: 0;
     list-style: none;
 }
 
+#sponsors li {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    padding: 1.25rem 1rem;
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+}
+
 #sponsors img {
-    max-width: 100%;
+    display: block;
+    width: 100%;
+    max-width: 10rem;
     height: auto;
 }
 
@@ -253,16 +326,38 @@ main > section {
     flex-wrap: wrap;
     justify-content: center;
     gap: 1rem;
+    max-width: 70rem;
+    margin: 0 auto;
+    padding-block: clamp(2.5rem, 5vw, 4rem);
 }
 
 #quick-links a {
-    flex: 1 1 10rem;
-    padding: 1rem;
-    text-align: center;
+    flex: 1 1 12rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.5rem;
     background-color: var(--color-surface);
+    color: var(--color-text);
+    border: 2px solid transparent;
     border-radius: 0.5rem;
     font-family: var(--font-titles);
+    font-size: 1.5rem;
     font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+#quick-links a::after {
+    content: "\2192";
+    color: var(--color-primary);
+}
+
+#quick-links a:hover {
+    border-color: var(--color-link);
+    color: var(--color-link);
+    text-decoration: none;
 }
 
 footer {
@@ -297,7 +392,7 @@ footer small {
 
 @media (max-width: 768px) {
     #countdown-section {
-        grid-template-columns: auto;
+        grid-template-columns: 1fr;
     }
 
     #countdown,
@@ -308,6 +403,17 @@ footer small {
 
     #cta {
         gap: 1rem;
+    }
+
+    #sponsors ul {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+
+    #quick-links a {
+        flex-basis: 9rem;
+        padding: 1rem;
+        font-size: 1.125rem;
     }
 
     header {
@@ -324,16 +430,23 @@ footer small {
     #header-pages ul {
         flex-wrap: wrap;
         justify-content: center;
+        gap: 0.5rem 1.25rem;
         font-size: 1.125rem;
     }
 
     #countdown {
         gap: 0.5rem;
-        padding: 1rem;
     }
 
     .countdown-item {
-        min-width: 3.5rem;
+        min-width: 0;
+        padding: 0.75rem 0.25rem;
+    }
+}
+
+@media (max-width: 600px) {
+    #sponsors ul {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -408,6 +521,7 @@ footer small {
 .field input,
 .field select {
     width: 100%;
+    min-height: 2.75rem;
     padding: 0.5rem 0.75rem;
     background-color: var(--color-bg);
     color: var(--color-text);
@@ -416,7 +530,8 @@ footer small {
     border-radius: 0.5rem;
 }
 
-body.darkmode .field input {
+body.darkmode .field input,
+body.darkmode .field select {
     color-scheme: dark;
 }
 
@@ -447,7 +562,10 @@ body.darkmode .field input {
     cursor: pointer;
 }
 
-#buy-button:hover {
+#buy-button:hover,
+#buy-button:focus-visible,
+#download-pdf:not(:disabled):hover,
+#download-pdf:not(:disabled):focus-visible {
     filter: brightness(0.9);
 }
 
@@ -829,4 +947,50 @@ main > h1:has(+ #combats-list) {
     #combats-list ul {
         font-size: 0.875rem;
     }
+}
+
+#faq {
+    max-width: 50rem;
+    margin: 0 auto;
+}
+
+#faq h1 {
+    margin: 0 0 0.5rem;
+}
+
+#faq > p {
+    margin: 0 0 1.5rem;
+    color: var(--color-text-muted);
+}
+
+#faq details {
+    margin-bottom: 0.75rem;
+    background-color: var(--color-surface);
+    border-left: 0.25rem solid var(--color-primary);
+    border-radius: 0.5rem;
+}
+
+#faq summary {
+    padding: 1rem 1.25rem;
+    font-family: var(--font-titles);
+    font-size: 1.125rem;
+    cursor: pointer;
+}
+
+#faq summary:hover {
+    color: var(--color-link);
+}
+
+#faq details[open] summary {
+    border-bottom: 1px solid var(--color-border);
+}
+
+#faq details p {
+    margin: 0;
+    padding: 1rem 1.25rem;
+}
+
+#faq details a {
+    display: inline-block;
+    margin: 0 1.25rem 1rem;
 }
