@@ -304,8 +304,6 @@ main > section {
     width: 100%;
     max-width: 10rem;
     height: auto;
-    filter: grayscale(1);
-    opacity: 0.75;
 }
 
 #quick-links {
@@ -399,8 +397,8 @@ footer small {
 
     #quick-links a {
         flex-basis: 9rem;
-        padding: 1.25rem;
-        font-size: 1.25rem;
+        padding: 1rem;
+        font-size: 1.125rem;
     }
 
     header {
