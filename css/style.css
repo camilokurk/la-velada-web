@@ -10,6 +10,7 @@
     --color-text: #171717;
     --color-text-muted: #595959;
     --color-link: #B8071F;
+    --color-hero: #080808;
 
     --font-titles: 'Anton', sans-serif;
     --font-text: 'Barlow', sans-serif;
@@ -154,12 +155,16 @@ body.darkmode #dark-mode::before {
     margin: 0;
 }
 
+#hero {
+    background-color: var(--color-hero);
+}
+
 #hero-photo {
     display: block;
     width: 100%;
+    max-width: 142dvh;
     height: auto;
-    max-height: 70dvh;
-    object-fit: cover;
+    margin: 0 auto;
 }
 
 main {
