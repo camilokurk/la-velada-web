@@ -439,6 +439,7 @@ footer small {
 .field input,
 .field select {
     width: 100%;
+    min-height: 2.75rem;
     padding: 0.5rem 0.75rem;
     background-color: var(--color-bg);
     color: var(--color-text);
@@ -447,7 +448,8 @@ footer small {
     border-radius: 0.5rem;
 }
 
-body.darkmode .field input {
+body.darkmode .field input,
+body.darkmode .field select {
     color-scheme: dark;
 }
 
