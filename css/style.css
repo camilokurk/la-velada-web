@@ -40,6 +40,12 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+@media (prefers-reduced-motion: reduce) {
+    body {
+        transition: none;
+    }
+}
+
 h1, h2, h3, nav {
     font-family: var(--font-titles);
     font-weight: 400;
@@ -47,7 +53,16 @@ h1, h2, h3, nav {
 
 a {
     color: var(--color-link);
-    text-decoration:none
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+:focus-visible {
+    outline: 3px solid var(--color-link);
+    outline-offset: 2px;
 }
 
 header {
@@ -73,8 +88,14 @@ header {
     color: var(--color-text);
 }
 
+#header-pages a:hover {
+    color: var(--color-link);
+}
+
 #header-pages a[aria-current="page"] {
     color: var(--color-link);
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
 }
 
 #header img {
@@ -222,8 +243,10 @@ main > section {
     cursor: pointer;
 }
 
-.btn:hover {
+.btn:hover,
+.btn:focus-visible {
     filter: brightness(0.9);
+    text-decoration: none;
 }
 
 #sponsors {
@@ -262,9 +285,14 @@ main > section {
     padding: 1rem;
     text-align: center;
     background-color: var(--color-surface);
+    border: 2px solid transparent;
     border-radius: 0.5rem;
     font-family: var(--font-titles);
     font-weight: 400;
+}
+
+#quick-links a:hover {
+    border-color: var(--color-link);
 }
 
 footer {
@@ -450,7 +478,10 @@ body.darkmode .field input {
     cursor: pointer;
 }
 
-#buy-button:hover {
+#buy-button:hover,
+#buy-button:focus-visible,
+#download-pdf:not(:disabled):hover,
+#download-pdf:not(:disabled):focus-visible {
     filter: brightness(0.9);
 }
 
