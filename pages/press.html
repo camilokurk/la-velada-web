@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" type="image/webp" href="../assets/images/general/logo.webp">
     <script src="../js/dark-mode.js" defer></script>
+    <script src="../js/press-validation.js" defer></script>
 
 </head>
 <body>
@@ -26,8 +27,85 @@
 
         </button>
     </header>
-    <main>
+    <main id="press">
+        <h1>Acreditación de prensa</h1>
+        <p class="press-intro">Solicita tu acreditación para cubrir La Velada del Año 2027 · 17 de julio de 2027 · Estadio Riyadh Air Metropolitano, Madrid. Revisaremos tu solicitud y te responderemos por correo.</p>
 
+        <form id="press-form" action="#" method="post" novalidate>
+
+            <fieldset>
+                <legend>Tus datos</legend>
+
+                <div class="field">
+                    <label for="press-name">Nombre</label>
+                    <input type="text" id="press-name" name="press-name" autocomplete="given-name" required aria-describedby="press-name-error">
+                    <span class="error" id="press-name-error" role="alert"></span>
+                </div>
+
+                <div class="field">
+                    <label for="press-surname">Apellidos</label>
+                    <input type="text" id="press-surname" name="press-surname" autocomplete="family-name" required aria-describedby="press-surname-error">
+                    <span class="error" id="press-surname-error" role="alert"></span>
+                </div>
+
+                <div class="field">
+                    <label for="press-email">Correo electrónico profesional</label>
+                    <input type="email" id="press-email" name="press-email" autocomplete="email" required aria-describedby="press-email-hint press-email-error">
+                    <span class="hint" id="press-email-hint">Te responderemos a esta dirección.</span>
+                    <span class="error" id="press-email-error" role="alert"></span>
+                </div>
+
+                <div class="field">
+                    <label for="press-phone">Teléfono</label>
+                    <input type="tel" id="press-phone" name="press-phone" autocomplete="tel" inputmode="tel" required aria-describedby="press-phone-error">
+                    <span class="error" id="press-phone-error" role="alert"></span>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Tu medio</legend>
+
+                <div class="field">
+                    <label for="press-media">Medio de comunicación</label>
+                    <input type="text" id="press-media" name="press-media" required aria-describedby="press-media-error">
+                    <span class="error" id="press-media-error" role="alert"></span>
+                </div>
+
+                <div class="field">
+                    <label for="press-type">Tipo de acreditación</label>
+                    <select id="press-type" name="press-type" required aria-describedby="press-type-error">
+                        <option value="">Selecciona un tipo</option>
+                        <option value="escrita">Prensa escrita</option>
+                        <option value="digital">Medio digital</option>
+                        <option value="radio">Radio</option>
+                        <option value="television">Televisión</option>
+                        <option value="fotografia">Fotografía</option>
+                    </select>
+                    <span class="error" id="press-type-error" role="alert"></span>
+                </div>
+
+                <div class="field field-wide">
+                    <label for="press-reason">Motivo de la solicitud</label>
+                    <textarea id="press-reason" name="press-reason" rows="4" required aria-describedby="press-reason-hint press-reason-error"></textarea>
+                    <span class="hint" id="press-reason-hint">Cuéntanos cómo vas a cubrir el evento (entre 20 y 500 caracteres).</span>
+                    <span class="error" id="press-reason-error" role="alert"></span>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Condiciones</legend>
+
+                <div class="field field-check">
+                    <input type="checkbox" id="press-terms" name="press-terms" required aria-describedby="press-terms-error">
+                    <label for="press-terms">Acepto las <a href="#">condiciones de acreditación</a></label>
+                    <span class="error" id="press-terms-error" role="alert"></span>
+                </div>
+            </fieldset>
+
+            <button type="submit" id="press-button">Solicitar acreditación</button>
+        </form>
+
+        <section id="press-confirmation" hidden aria-live="polite" tabindex="-1"></section>
     </main>
     <footer>
         <div>

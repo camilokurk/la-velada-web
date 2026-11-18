@@ -1000,3 +1000,124 @@ main > h1:has(+ #combats-list) {
     font-size: inherit;
     font-weight: inherit;
 }
+
+
+/* ===== PÁGINA: PRENSA ===== */
+#press {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 1.5rem 2rem;
+}
+
+.press-intro {
+    color: var(--color-text-muted);
+}
+
+.press-intro[hidden] {
+    display: none;
+}
+
+#press-form[hidden] {
+    display: none;
+}
+
+#press-form fieldset {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1rem;
+    margin: 0 0 1.5rem;
+    padding: 0;
+    border: none;
+}
+
+#press-form .field:has(#press-email),
+#press-form .field-wide,
+#press-form .field-check {
+    grid-column: 1 / -1;
+}
+
+#press-form legend {
+    margin-bottom: 0.75rem;
+    padding: 0;
+    font-family: var(--font-titles);
+    font-size: 1.25rem;
+}
+
+.field textarea {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font: inherit;
+    border: 1px solid var(--color-text-muted);
+    border-radius: 0.5rem;
+    resize: vertical;
+}
+
+body.darkmode .field textarea {
+    color-scheme: dark;
+}
+
+textarea[aria-invalid="true"] {
+    border: 2px solid var(--color-error);
+}
+
+#press-button {
+    width: 100%;
+    padding: 0.75rem 2rem;
+    background-color: var(--color-primary);
+    color: #FFFFFF;
+    font-family: var(--font-titles);
+    font-size: 1.125rem;
+    font-weight: 400;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+#press-button:hover,
+#press-button:focus-visible {
+    filter: brightness(0.9);
+}
+
+#press-confirmation {
+    padding: 1.5rem;
+    background-color: var(--color-surface);
+    border-left: 0.25rem solid var(--color-success);
+    border-radius: 0.5rem;
+}
+
+#press-confirmation[hidden] {
+    display: none;
+}
+
+#press-confirmation h2 {
+    margin: 0 0 0.75rem;
+}
+
+#press-confirmation p {
+    margin: 0 0 0.5rem;
+}
+
+#press-confirmation strong {
+    display: block;
+    font-family: var(--font-titles);
+    font-size: clamp(1.75rem, 6vw, 2.5rem);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+    color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+    #press-form fieldset {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    #press {
+        padding: 0 1rem 1.5rem;
+    }
+}
