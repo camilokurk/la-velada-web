@@ -21,6 +21,7 @@ la-velada-web/
 ├── css/
 │   └── style.css
 ├── js/
+│   ├── press-validation.js
 │   ├── dark-mode.js
 │   ├── countdown.js
 │   ├── combats-data.js
